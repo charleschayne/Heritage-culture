@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+
+  /* Primary */
+  --hc-black: #000000;
+  --hc-white: #ffffff;
+
+  /* Secondary Palettes */
+  /* Terracotta */
+  --hc-terracotta: #a0522d;
+  --hc-terracotta-light: #c5714d;
+  --hc-terracotta-muted: #bfbfbf;
+  --hc-terracotta-pale: #9f9f9f;
+
+  /* Indigo */
+  --hc-indigo: #242b62;
+  --hc-indigo-light: #61588b;
+  --hc-indigo-muted: #8982a8;
+  --hc-indigo-pale: #b0abc5;
+
+  /* Green */
+  --hc-green: #1c651b;
+  --hc-green-light: #336d51;
+  --hc-green-muted: #66927d;
+  --hc-green-pale: #99b6a8;
+
+  /* Sand */
+  --hc-sand: #cbb89d;
+  --hc-sand-light: #d5c6b1;
+  --hc-sand-muted: #e0d4c4;
+  --hc-sand-pale: #eae3d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-hc-black: var(--hc-black);
+  --color-hc-white: var(--hc-white);
+
+  --color-hc-terracotta: var(--hc-terracotta);
+  --color-hc-terracotta-light: var(--hc-terracotta-light);
+  --color-hc-terracotta-muted: var(--hc-terracotta-muted);
+  --color-hc-terracotta-pale: var(--hc-terracotta-pale);
+
+  --color-hc-indigo: var(--hc-indigo);
+  --color-hc-indigo-light: var(--hc-indigo-light);
+  --color-hc-indigo-muted: var(--hc-indigo-muted);
+  --color-hc-indigo-pale: var(--hc-indigo-pale);
+
+  --color-hc-green: var(--hc-green);
+  --color-hc-green-light: var(--hc-green-light);
+  --color-hc-green-muted: var(--hc-green-muted);
+  --color-hc-green-pale: var(--hc-green-pale);
+
+  --color-hc-sand: var(--hc-sand);
+  --color-hc-sand-light: var(--hc-sand-light);
+  --color-hc-sand-muted: var(--hc-sand-muted);
+  --color-hc-sand-pale: var(--hc-sand-pale);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-crimson);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
