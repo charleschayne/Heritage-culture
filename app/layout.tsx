@@ -17,9 +17,6 @@ const crimsonPro = Crimson_Pro({
 export const metadata: Metadata = {
   title: "Heritage & Culture Africa",
   description: "Preserving and celebrating African heritage through music, art, festivals, and innovative products.",
-  icons: {
-    icon: "/fav.png",
-  },
 };
 
 export default function RootLayout({
