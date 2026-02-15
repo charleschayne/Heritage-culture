@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
     const sideProjects = projects.slice(1, 4); // Show next 3
 
     return (
-        <section id="experiences" className="py-24 bg-black text-white relative">
+        <section id="experiences" className="py-24 bg-black text-white relative scroll-mt-24">
             <div className="container mx-auto px-4 md:px-12">
 
                 {/* Header */}

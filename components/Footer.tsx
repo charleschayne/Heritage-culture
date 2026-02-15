@@ -25,29 +25,18 @@ export default function Footer() {
                     </div>
 
                     {/* Links Columns */}
-                    <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 w-full">
+                    <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12 w-full">
 
                         {/* Column 1 */}
                         <div className="space-y-6">
                             <h4 className="font-medium text-white">Platform</h4>
                             <ul className="space-y-4 text-sm text-gray-500">
-                                <li><Link href="#" className="hover:text-white transition-colors">Experiences</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Showcase</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Talent</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Partners</Link></li>
+                                <li><Link href="/#about" className="hover:text-white transition-colors">About</Link></li>
+                                <li><Link href="/#experiences" className="hover:text-white transition-colors">Experiences</Link></li>
                             </ul>
                         </div>
 
-                        {/* Column 2 */}
-                        <div className="space-y-6">
-                            <h4 className="font-medium text-white">About</h4>
-                            <ul className="space-y-4 text-sm text-gray-500">
-                                <li><Link href="#" className="hover:text-white transition-colors">Our Story</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Team</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Careers</Link></li>
-                                <li><Link href="#" className="hover:text-white transition-colors">Press</Link></li>
-                            </ul>
-                        </div>
+
 
                         {/* Column 3 */}
                         <div className="space-y-6">

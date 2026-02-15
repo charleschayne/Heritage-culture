@@ -7,11 +7,9 @@ import { Menu, X, ArrowRight, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Experiences", href: "#experiences" },
-    { name: "Talent", href: "#talent" },
-    { name: "Partnerships", href: "#partnerships" },
-    { name: "News", href: "#news" },
 ];
 
 export default function Navbar() {

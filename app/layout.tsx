@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Heritage & Culture Africa",
   description: "Preserving and celebrating African heritage through music, art, festivals, and innovative products.",
   icons: {
-    icon: "/logo.png",
+    icon: "/fav.png",
   },
 };
 
