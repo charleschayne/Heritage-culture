@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Crimson_Pro } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import CookieBanner from "@/components/CookieBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,6 +35,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

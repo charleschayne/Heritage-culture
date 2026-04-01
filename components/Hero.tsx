@@ -44,13 +44,13 @@ export default function Hero() {
 
                     {/* Description */}
                     <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl mb-10 border-l-2 border-hc-terracotta pl-6">
-                        Preserving and celebrating African heritage through music, art, festivals, and innovative products that resonate with both local and global audiences.
+                        A cultural organization created to promote, protect and globalize African heritage through experiences, festivals, storytelling, and tourism — positioning Africa as a symbol of luxury, excellence, and heritage.
                     </p>
 
                     {/* Action Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link
-                            href="#contact"
+                            href="/contact"
                             className="px-8 py-4 bg-white text-hc-black font-bold text-xs tracking-widest uppercase hover:bg-hc-sand transition-colors flex items-center justify-center gap-2 rounded-sm"
                         >
                             Get In Touch
