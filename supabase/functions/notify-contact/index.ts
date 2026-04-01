@@ -1,53 +1,65 @@
 // @ts-nocheck
-// supabase/functions/notify-contact/index.ts
-// Deploy with: supabase functions deploy notify-contact
-//
-// Set these secrets in your Supabase dashboard (Project Settings > Edge Functions > Secrets):
-//   NOTIFY_EMAIL    — your email address (where you want to receive notifications)
-//   SMTP_HOST       — e.g. smtp.gmail.com
-//   SMTP_PORT       — e.g. 587
-//   SMTP_USER       — your Gmail address
-//   SMTP_PASS       — your Gmail app password (not your account password)
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL");
 
 serve(async (req: Request) => {
     try {
         const { name, email, subject, message } = await req.json();
 
-        const client = new SmtpClient();
-        await client.connectTLS({
-            hostname: Deno.env.get("SMTP_HOST")!,
-            port: 465,
-            username: Deno.env.get("SMTP_USER")!,
-            password: Deno.env.get("SMTP_PASS")!,
+        if (!RESEND_API_KEY || !NOTIFY_EMAIL) {
+            throw new Error("Missing environment variables: RESEND_API_KEY or NOTIFY_EMAIL");
+        }
+
+        const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${RESEND_API_KEY}`,
+            },
+            body: JSON.stringify({
+                from: "H&C Africa <onboarding@resend.dev>",
+                to: [NOTIFY_EMAIL],
+                subject: `[H&C Africa] New Contact: ${subject ?? "General Inquiry"}`,
+                html: `
+                    <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+                        <h2 style="color: #000; border-bottom: 1px solid #eee; padding-bottom: 10px;">New Contact Submission</h2>
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Subject:</strong> ${subject ?? "General Inquiry"}</p>
+                        <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 5px;">
+                            <p><strong>Message:</strong></p>
+                            <p style="white-space: pre-wrap;">${message}</p>
+                        </div>
+                        <footer style="margin-top: 30px; font-size: 12px; color: #999;">
+                            This email was sent from the Heritage & Culture Africa platform contact form via Resend.
+                        </footer>
+                    </div>
+                `,
+            }),
         });
 
-        await client.send({
-            from: Deno.env.get("SMTP_USER")!,
-            to: Deno.env.get("NOTIFY_EMAIL")!,
-            subject: `[H&C Africa] New Contact: ${subject ?? "General Inquiry"}`,
-            content: `
-New contact form submission on Heritage & Culture Africa:
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(`Resend API error: ${JSON.stringify(error)}`);
+        }
 
-Name:     ${name}
-Email:    ${email}
-Subject:  ${subject ?? "—"}
-Message:
-${message}
-            `.trim(),
+        const data = await res.json();
+        return new Response(JSON.stringify({ ok: true, id: data.id }), { 
+            status: 200,
+            headers: { "Content-Type": "application/json" }
         });
 
-        await client.close();
-        return new Response(JSON.stringify({ ok: true, message: "Email sent successfully" }), { status: 200 });
     } catch (err) {
-        console.error("notify-contact SMTP error:", err);
+        console.error("notify-contact error:", err.message);
         return new Response(JSON.stringify({ 
-            error: "SMTP execution failed",
+            error: "Failed to send notification",
             details: err.message,
-            stack: err.stack,
             timestamp: new Date().toISOString()
-        }), { status: 500 });
+        }), { 
+            status: 500,
+            headers: { "Content-Type": "application/json" }
+        });
     }
 });
