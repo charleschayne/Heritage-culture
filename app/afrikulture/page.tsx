@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Metadata } from "next";
-import { ArrowUpRight, MapPin, Calendar, Music, Palette, Utensils, Globe, Users } from "lucide-react";
+import { ArrowUpRight, MapPin, Calendar, Music, Palette, Utensils, Globe, Users, Instagram } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AfriKulture Doha 2026 | Heritage & Culture Africa",
@@ -221,13 +221,24 @@ export default function AfriKulturePage() {
                     <p className="text-gray-500 font-light font-sans max-w-xl mx-auto mb-12">
                         Register your interest to receive updates on AfriKulture Doha 2026 — tickets, artist announcements, partnerships, and more.
                     </p>
-                    <a
-                        href="/contact"
-                        className="inline-flex items-center gap-3 px-12 py-5 bg-hc-sand text-hc-black font-bold tracking-widest uppercase hover:bg-white transition-all rounded-sm group shadow-2xl font-sans"
-                    >
-                        Register Interest
-                        <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </a>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <a
+                            href="/contact"
+                            className="inline-flex items-center gap-3 px-12 py-5 bg-hc-sand text-hc-black font-bold tracking-widest uppercase hover:bg-white transition-all rounded-sm group shadow-2xl font-sans"
+                        >
+                            Register Interest
+                            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+                        <a
+                            href="https://instagram.com/afrikulturefestival"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-12 py-5 border border-white/20 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all rounded-sm group font-sans"
+                        >
+                            Follow @afrikulturefestival
+                            <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        </a>
+                    </div>
                 </div>
             </section>
 

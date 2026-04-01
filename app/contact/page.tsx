@@ -77,7 +77,7 @@ export default function Contact() {
                             <div className="space-y-4">
                                 <div className="flex items-center gap-4 text-gray-400 font-light font-sans">
                                     <Mail className="w-5 h-5 shrink-0 text-hc-sand" />
-                                    <a href="mailto:hello@hc-africa.com" className="hover:text-white transition-colors">hello@hc-africa.com</a>
+                                    <a href="mailto:info@handcafrica.com" className="hover:text-white transition-colors">info@handcafrica.com</a>
                                 </div>
                                 <div className="flex items-center gap-4 text-gray-400 font-light font-sans">
                                     <Phone className="w-5 h-5 shrink-0 text-hc-sand" />
