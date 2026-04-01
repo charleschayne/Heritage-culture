@@ -17,9 +17,9 @@ serve(async (req: Request) => {
         const { name, email, subject, message } = await req.json();
 
         const client = new SmtpClient();
-        await client.connect({
+        await client.connectTLS({
             hostname: Deno.env.get("SMTP_HOST")!,
-            port: Number(Deno.env.get("SMTP_PORT") || 465),
+            port: 465,
             username: Deno.env.get("SMTP_USER")!,
             password: Deno.env.get("SMTP_PASS")!,
         });
@@ -40,9 +40,14 @@ ${message}
         });
 
         await client.close();
-        return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        return new Response(JSON.stringify({ ok: true, message: "Email sent successfully" }), { status: 200 });
     } catch (err) {
-        console.error("notify-contact error:", err);
-        return new Response(JSON.stringify({ error: String(err) }), { status: 500 });
+        console.error("notify-contact SMTP error:", err);
+        return new Response(JSON.stringify({ 
+            error: "SMTP execution failed",
+            details: err.message,
+            stack: err.stack,
+            timestamp: new Date().toISOString()
+        }), { status: 500 });
     }
 });
