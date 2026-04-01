@@ -29,14 +29,19 @@ export async function POST(req: NextRequest) {
         // 2. Trigger Edge Function to notify you by email
         const edgeFnUrl = process.env.SUPABASE_EDGE_FUNCTION_URL;
         if (edgeFnUrl) {
-            await fetch(edgeFnUrl, {
+            const edgeRes = await fetch(edgeFnUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
                 },
                 body: JSON.stringify({ name, email, subject, message }),
-            }).catch((e) => console.error("Edge function notify failed:", e));
+            });
+
+            if (!edgeRes.ok) {
+                const errorText = await edgeRes.text();
+                console.error(`Edge function notify failed: ${edgeRes.status} ${edgeRes.statusText}`, errorText);
+            }
         }
 
         return NextResponse.json({ success: true });

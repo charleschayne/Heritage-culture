@@ -1,3 +1,4 @@
+// @ts-nocheck
 // supabase/functions/notify-contact/index.ts
 // Deploy with: supabase functions deploy notify-contact
 //
@@ -16,9 +17,9 @@ serve(async (req: Request) => {
         const { name, email, subject, message } = await req.json();
 
         const client = new SmtpClient();
-        await client.connectTLS({
+        await client.connect({
             hostname: Deno.env.get("SMTP_HOST")!,
-            port: Number(Deno.env.get("SMTP_PORT") ?? 587),
+            port: Number(Deno.env.get("SMTP_PORT") || 465),
             username: Deno.env.get("SMTP_USER")!,
             password: Deno.env.get("SMTP_PASS")!,
         });
