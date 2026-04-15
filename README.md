@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Heritage & Culture Africa
 
-## Getting Started
+![Heritage & Culture Banner](https://images.unsplash.com/photo-1523733230464-44b6f6f237ef?auto=format&fit=crop&q=80&w=2000)
 
-First, run the development server:
+**Heritage & Culture Africa** is a high-fidelity digital platform dedicated to preserving and celebrating African heritage through music, art, festivals, and innovative digital storytelling. Built with a focus on premium aesthetics and global relevance, the platform bridges the gap between traditional culture and modern digital expression.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
+
+## 🏛️ Project Ethos
+
+Our platform is guided by four core values that define how we preserve the past while building the future:
+
+*   **Authenticity**: Rooted in heritage, staying true to African roots while presenting them to a global audience.
+*   **Profitability**: Building sustainable, purpose-driven ventures that leave a lasting social impact.
+*   **Global Relevance**: Positioning African culture as a competitive and celebrated global export.
+*   **Innovation**: Reimagining culture through modern formats, technology, and fresh expressions.
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Backend/Database**: [Supabase](https://supabase.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 20+ 
+- npm / yarn / pnpm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd heritage-culture
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Copy `.env.local.example` to `.env.local` and fill in your Supabase credentials:
+   ```bash
+   cp .env.local.example .env.local
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
 
-## Learn More
+- `app/`: Next.js App Router pages and API routes.
+- `components/`: Reusable UI components (Hero, BrandValues, FeaturedProjects, etc.).
+- `lib/`: Utility functions and shared logic.
+- `public/`: Static assets such as images and fonts.
+- `supabase/`: Database migrations and edge function definitions.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Immersive Hero Section**: High-fidelity visual storytelling.
+- **Brand Values Display**: Interactive exploration of project ethos.
+- **Project Showcase**: Rich gallery of featured cultural initiatives.
+- **Edge-Ready Contact**: Integrated with Supabase Edge Functions for seamless reach.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is private and confidential. Created for Heritage & Culture Africa.
