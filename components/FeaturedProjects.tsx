@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 
 const projects = [
     {
-        title: "AfriKulture Festival, Doha",
+        title: "Afrikulture Festival, Doha",
         location: "Doha, Qatar",
         year: "2024",
-        imageUrl: "https://images.unsplash.com/photo-1516307365426-bea591f05011?q=80&w=2600&auto=format&fit=crop",
+        imageUrl: "/concert fireworks.jpg",
         description: "A vibrant celebration of African heritage, bringing art, music, and cuisine to the heart of Doha.",
         href: "/afrikulture"
     },
@@ -20,7 +20,7 @@ const projects = [
         title: "New Yam Music Festival (NYMF)",
         location: "Enugu, Nigeria",
         year: "2025",
-        imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=2600&auto=format&fit=crop",
+        imageUrl: "/NYMF Drummer guys.jpg",
         description: "Blending ancestral Igbo traditions with contemporary music and art in a spectacular harvest celebration.",
         href: "https://nymf.africa",
         isExternal: true
@@ -76,6 +76,8 @@ export default function FeaturedProjects() {
                                     alt={featuredProject.title}
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    priority
+                                    sizes="(max-width: 1024px) 100vw, 60vw"
                                 />
                             </div>
 
@@ -125,6 +127,7 @@ export default function FeaturedProjects() {
                                             alt={project.title}
                                             fill
                                             className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                                            sizes="(max-width: 1024px) 100vw, 30vw"
                                         />
                                     </div>
 
@@ -136,7 +139,7 @@ export default function FeaturedProjects() {
                             ))}
 
                             <Link href="/afrikulture" className="mt-8 inline-flex items-center gap-2 text-white font-bold tracking-widest uppercase text-sm hover:text-hc-sand transition-colors self-start">
-                                Explore AfriKulture <ArrowUpRight className="w-4 h-4" />
+                                Explore Afrikulture <ArrowUpRight className="w-4 h-4" />
                             </Link>
                         </div>
 

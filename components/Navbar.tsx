@@ -10,11 +10,12 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Sponsorship", href: "/sponsorship" },
     { 
         name: "Experiences", 
         href: "/#experiences",
         dropdown: [
-            { name: "AfriKulture", href: "/afrikulture" },
+            { name: "Afrikulture", href: "/afrikulture" },
             { name: "NYMF", href: "https://nymf.africa", isExternal: true },
         ]
     },

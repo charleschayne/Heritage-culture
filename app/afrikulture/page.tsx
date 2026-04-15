@@ -1,48 +1,64 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { Metadata } from "next";
-import { ArrowUpRight, MapPin, Calendar, Music, Palette, Utensils, Globe, Users, Instagram } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, MapPin, Calendar, Music, Palette, Utensils, Globe, Users, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 
-export const metadata: Metadata = {
-    title: "AfriKulture Doha 2026 | Heritage & Culture Africa",
-    description: "AfriKulture Doha 2026 — Heritage & Culture Africa's flagship international cultural activation. A world-class celebration of African heritage in the heart of Doha, Qatar.",
-};
+// Metadata removed from client component, moving title to a dummy tag or handling in layout
 
 const highlights = [
     {
         icon: Music,
         title: "Live Performances",
         description: "From traditional drum ensembles to modern Afrobeats — live performances celebrating the full sonic spectrum of the continent, featuring world-class African artists.",
+        image: "/Made-Kuti.jpg"
     },
     {
         icon: Palette,
         title: "Visual Storytelling",
         description: "Curated exhibitions, contemporary galleries, and immersive installations by leading African and diaspora artists sharing their visions of identity, heritage, and innovation.",
+        image: "/visual-storytelling.jpg"
     },
     {
         icon: Utensils,
         title: "Culinary Journey",
         description: "A curated pan-African culinary experience featuring authentic regional dishes and modern fusion from world-class chefs. Taste the continent in one place.",
+        image: "/culinary.jpg"
     },
     {
         icon: Globe,
         title: "Cultural Tourism",
         description: "A destination-integrated experience that positions Doha as a crossroads of African and Middle Eastern culture, driving international tourism and cross-continental exchange.",
+        image: "/cultural tourism.jpg"
     },
     {
         icon: Users,
         title: "Community & Diaspora",
         description: "A space for the African diaspora to gather, celebrate, and reconnect — uniting communities across borders through shared cultural pride and creative expression.",
+        image: "/community&diaspora.jpg"
     },
     {
         icon: MapPin,
         title: "Doha, Qatar",
-        description: "Hosted in one of the world's most international cities, AfriKulture Doha 2026 brings the African continent to the global stage from the heart of the Middle East.",
+        description: "Hosted in one of the world's most international cities, Afrikulture Doha 2026 brings the African continent to the global stage from the heart of the Middle East.",
+        image: "/doha11.jpg"
     },
 ];
 
 export default function AfriKulturePage() {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setActiveIndex((prev) => (prev === highlights.length - 1 ? 0 : prev + 1));
+        }, 5000);
+
+        return () => clearInterval(timer);
+    }, [activeIndex]); // Reset timer on slide change
+
     return (
         <main className="min-h-screen bg-black text-white">
             <Navbar />
@@ -50,11 +66,12 @@ export default function AfriKulturePage() {
             {/* ── HERO ── */}
             <section className="relative h-[90vh] w-full overflow-hidden flex items-end pb-20">
                 <Image
-                    src="https://images.unsplash.com/photo-1516307365426-bea591f05011?q=80&w=2600&auto=format&fit=crop"
-                    alt="AfriKulture Festival Doha 2026"
+                    src="/afculture12.jpg"
+                    alt="Afrikulture Festival Doha 2026"
                     fill
                     className="object-cover opacity-40"
                     priority
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
 
@@ -70,13 +87,13 @@ export default function AfriKulturePage() {
                                     <span className="text-hc-sand uppercase tracking-[0.2em] text-xs font-bold font-sans">Flagship International Activation</span>
                                 </div>
                                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[1.05] tracking-tight">
-                                    AfriKulture <br />
+                                    Afrikulture <br />
                                     <span className="italic text-hc-sand font-normal">Doha 2026</span>
                                 </h1>
                             </div>
                         </div>
 
-                        <div className="flex flex-wrap gap-8 text-sm uppercase tracking-widest text-white/60 font-sans">
+                        <div className="flex flex-wrap gap-8 text-sm uppercase tracking-widest text-white font-sans">
                             <div className="flex items-center gap-2">
                                 <MapPin className="w-4 h-4 text-hc-sand" />
                                 Doha, Qatar
@@ -107,24 +124,29 @@ export default function AfriKulturePage() {
                                 Africa's Culture, <br />
                                 <span className="italic text-hc-sand font-normal">On the World Stage</span>
                             </h2>
-                            <p className="text-xl text-gray-400 font-light leading-relaxed mb-8 font-sans">
-                                AfriKulture Doha represents the flagship international activation of the Heritage & Culture Africa mandate — a world-class, multi-day cultural festival designed to position Africa as a symbol of luxury, creativity, and heritage on a global stage.
+                            <p className="text-xl text-white font-light leading-relaxed mb-8 font-sans">
+                                Afrikulture Doha represents the flagship international activation of the Heritage & Culture Africa mandate — a world-class, multi-day cultural festival designed to position Africa as a symbol of luxury, creativity, and heritage on a global stage.
                             </p>
-                            <p className="text-lg text-gray-500 font-light leading-relaxed font-sans">
-                                We believe Africa's culture is not only heritage — it is an exportable global asset capable of generating economic growth, attracting international visitors, and shaping global narratives. AfriKulture Doha is that vision made real.
+                            <p className="text-lg text-white font-light leading-relaxed font-sans">
+                                We believe Africa's culture is not only heritage — it is an exportable global asset capable of generating economic growth, attracting international visitors, and shaping global narratives. Afrikulture Doha is that vision made real.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
-                                <Image src="https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=1200&auto=format&fit=crop" alt="African culture" fill className="object-cover hover:scale-105 transition-transform duration-700" />
-                            </div>
-                            <div className="flex flex-col gap-4">
+                            <div className="space-y-4">
                                 <div className="relative aspect-square rounded-xl overflow-hidden">
-                                    <Image src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800&auto=format&fit=crop" alt="Festival atmosphere" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                                    <Image src="/African Souk.jpeg" alt="African Souk" fill className="object-cover hover:scale-105 transition-transform duration-700" />
                                 </div>
                                 <div className="relative aspect-square rounded-xl overflow-hidden">
-                                    <Image src="https://images.unsplash.com/photo-1614289371518-722f2615943d?q=80&w=800&auto=format&fit=crop" alt="African art" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                                    <Image src="/Made-Kuti.jpg" alt="Made Kuti" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                                </div>
+                            </div>
+                            <div className="space-y-4 pt-8">
+                                <div className="relative aspect-square rounded-xl overflow-hidden">
+                                    <Image src="/Male fashion model.jpg" alt="African Fashion" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                                </div>
+                                <div className="relative aspect-square rounded-xl overflow-hidden">
+                                    <Image src="/Morrocan drum.jpg" alt="Moroccan Drum" fill className="object-cover hover:scale-105 transition-transform duration-700" />
                                 </div>
                             </div>
                         </div>
@@ -138,7 +160,7 @@ export default function AfriKulturePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
                 <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-4 md:px-12">
-                        <p className="text-hc-sand text-xs font-bold tracking-widest uppercase font-sans mb-4">AfriKulture Doha 2026</p>
+                        <p className="text-hc-sand text-xs font-bold tracking-widest uppercase font-sans mb-4">Afrikulture Doha 2026</p>
                         <blockquote className="text-3xl md:text-5xl font-serif italic text-white max-w-2xl leading-tight">
                             "A destination-integrated platform built on proven event frameworks."
                         </blockquote>
@@ -146,35 +168,12 @@ export default function AfriKulturePage() {
                 </div>
             </section>
 
-            {/* ── FESTIVAL HIGHLIGHTS ── */}
-            <section className="py-24 bg-[#050505]">
-                <div className="container mx-auto px-4 md:px-12">
-                    <div className="flex items-center gap-3 mb-4">
-                        <span className="h-px w-8 bg-hc-sand" />
-                        <span className="text-hc-sand uppercase tracking-[0.2em] text-xs font-bold font-sans">The Experience</span>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-serif mb-16 leading-tight">
-                        Festival <span className="italic text-hc-sand font-normal">Highlights</span>
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {highlights.map((h, i) => (
-                            <div key={i} className="group p-8 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-hc-sand/30 hover:-translate-y-1 transition-all duration-500">
-                                <h.icon className="w-9 h-9 text-hc-sand mb-6" strokeWidth={1.5} />
-                                <h3 className="text-xl font-serif mb-4 text-white">{h.title}</h3>
-                                <p className="text-gray-400 font-light leading-relaxed text-sm font-sans">{h.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ── IMPACT PILLARS ── */}
+            {/* ── IMPACT PILLARS (Why Doha) ── */}
             <section className="py-24 border-t border-white/5">
                 <div className="container mx-auto px-4 md:px-12">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-                            <Image src="https://images.unsplash.com/photo-1533577116850-9cc66cad8a9b?q=80&w=1600&auto=format&fit=crop" alt="Cultural impact" fill className="object-cover" />
+                            <Image src="/Qatar Cultural Center.jpg" alt="Qatar Cultural Center" fill className="object-cover" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
                         <div>
@@ -196,7 +195,7 @@ export default function AfriKulturePage() {
                                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-hc-sand shrink-0" />
                                         <div>
                                             <p className="font-semibold text-white font-sans mb-1">{item.title}</p>
-                                            <p className="text-gray-500 text-sm font-light font-sans leading-relaxed">{item.desc}</p>
+                                            <p className="text-white text-sm font-light font-sans leading-relaxed">{item.desc}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -206,20 +205,102 @@ export default function AfriKulturePage() {
                 </div>
             </section>
 
+            {/* ── FESTIVAL HIGHLIGHTS (Carousel) ── */}
+            <section className="py-24 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+                <div className="container mx-auto px-4 md:px-12">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="h-px w-8 bg-hc-sand" />
+                                <span className="text-hc-sand uppercase tracking-[0.2em] text-xs font-bold font-sans">The Experience</span>
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                                Festival <span className="italic text-hc-sand font-normal">Highlights</span>
+                            </h2>
+                        </div>
+                        
+                        {/* Navigation Controls */}
+                        <div className="flex items-center gap-4">
+                            <button 
+                                onClick={() => setActiveIndex((prev) => (prev === 0 ? highlights.length - 1 : prev - 1))}
+                                className="p-4 rounded-full border border-white/10 hover:border-hc-sand/50 hover:bg-white/5 transition-all text-white group"
+                            >
+                                <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+                            </button>
+                            <button 
+                                onClick={() => setActiveIndex((prev) => (prev === highlights.length - 1 ? 0 : prev + 1))}
+                                className="p-4 rounded-full border border-white/10 hover:border-hc-sand/50 hover:bg-white/5 transition-all text-white group"
+                            >
+                                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="relative h-[600px] md:h-[500px] w-full bg-white/5 rounded-3xl overflow-hidden border border-white/10">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="absolute inset-0 grid md:grid-cols-2"
+                            >
+                                {/* Image Half */}
+                                <div className="relative h-64 md:h-full overflow-hidden">
+                                    <Image 
+                                        src={highlights[activeIndex].image} 
+                                        alt={highlights[activeIndex].title}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        quality={85}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/20" />
+                                </div>
+
+                                {/* Content Half */}
+                                <div className="p-8 md:p-16 flex flex-col justify-center bg-black/40 backdrop-blur-sm border-l border-white/5">
+                                    {(() => {
+                                        const HighlightIcon = highlights[activeIndex].icon;
+                                        return <HighlightIcon className="w-12 h-12 text-hc-sand mb-8" strokeWidth={1.5} />;
+                                    })()}
+                                    <h3 className="text-3xl md:text-4xl font-serif mb-6 text-white">{highlights[activeIndex].title}</h3>
+                                    <p className="text-white font-light leading-relaxed text-lg max-w-md">
+                                        {highlights[activeIndex].description}
+                                    </p>
+                                    
+                                    {/* Slide Indicators */}
+                                    <div className="flex gap-2 mt-12">
+                                        {highlights.map((_, i) => (
+                                            <div 
+                                                key={i}
+                                                className={`h-1 transition-all duration-300 rounded-full ${i === activeIndex ? "w-8 bg-hc-sand" : "w-4 bg-white/20"}`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                </div>
+            </section>
+
             {/* ── CTA ── */}
             <section className="py-32 relative overflow-hidden bg-black border-t border-white/5">
                 <div className="container mx-auto px-4 md:px-12 relative z-10 text-center">
                     <div className="flex items-center justify-center gap-3 mb-6">
                         <span className="h-px w-8 bg-hc-sand" />
-                        <span className="text-hc-sand uppercase tracking-[0.2em] text-xs font-bold font-sans">AfriKulture Doha 2026</span>
+                        <span className="text-hc-sand uppercase tracking-[0.2em] text-xs font-bold font-sans">Afrikulture Doha 2026</span>
                         <span className="h-px w-8 bg-hc-sand" />
                     </div>
                     <h2 className="text-5xl md:text-7xl font-serif mb-6 max-w-4xl mx-auto tracking-tight">
                         Be Part of the <br />
                         <span className="italic text-hc-sand font-normal">Next Chapter</span>
                     </h2>
-                    <p className="text-gray-500 font-light font-sans max-w-xl mx-auto mb-12">
-                        Register your interest to receive updates on AfriKulture Doha 2026 — tickets, artist announcements, partnerships, and more.
+                    <p className="text-white font-light font-sans max-w-xl mx-auto mb-12">
+                        Register your interest to receive updates on Afrikulture Doha 2026 — tickets, artist announcements, partnerships, and more.
                     </p>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                         <a
@@ -241,6 +322,20 @@ export default function AfriKulturePage() {
                     </div>
                 </div>
             </section>
+
+            {/* Hidden Preloader for Carousel Images to eliminate lag during transitions */}
+            <div className="hidden pointer-events-none w-0 h-0 overflow-hidden">
+                {highlights.map((h, i) => (
+                    <Image 
+                        key={i}
+                        src={h.image}
+                        alt="Preload"
+                        width={10}
+                        height={10}
+                        priority
+                    />
+                ))}
+            </div>
 
             <Footer />
         </main>

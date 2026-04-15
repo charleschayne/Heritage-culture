@@ -10,9 +10,9 @@ export default function Home() {
     <main className="min-h-screen bg-hc-white">
       <Navbar />
       <Hero />
-      <About isTeaser={true} />
       <BrandValues />
       <FeaturedProjects />
+      <About isTeaser={true} />
       <Footer />
     </main>
   );

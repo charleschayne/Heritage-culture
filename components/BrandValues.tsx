@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ShieldCheck, TrendingUp, Globe, Zap } from "lucide-react";
+
 
 const values = [
     {
@@ -9,32 +11,32 @@ const values = [
         title: "Authenticity",
         subtitle: "Rooted in heritage",
         description: "We stay true to African heritage while presenting it in ways that feel authentically relevant to a global audience.",
-        color: "bg-[#A0522D]", // Terracotta
-        shape: "rounded-full", // Circle
+        color: "text-[#A0522D]", // Terracotta
+        icon: ShieldCheck,
     },
     {
         id: "profitability",
         title: "Profitability",
         subtitle: "Purpose-driven ventures",
         description: "Building sustainable, revenue-generating ventures that leave a lasting cultural and social impact.",
-        color: "bg-[#242B62]", // Indigo
-        shape: "rounded-full rounded-tl-none", // Teardrop/Leaf
+        color: "text-[#4B5EAA]", // Indigo (slightly lightened for visibility)
+        icon: TrendingUp,
     },
     {
         id: "relevance",
         title: "Global Relevance",
         subtitle: "Beyond borders",
         description: "Positioning African culture as not just regional, but a competitive, celebrated global export.",
-        color: "bg-[#1C651B]", // Green
-        shape: "rounded-none rotate-45 scale-75", // Diamond (simulated)
+        color: "text-[#2E8B57]", // SeaGreen
+        icon: Globe,
     },
     {
         id: "innovation",
         title: "Innovation",
         subtitle: "Future forward",
         description: "Reimagining culture through modern formats, technology, and fresh expressions.",
-        color: "bg-[#CBB89D]", // Sand
-        shape: "rounded-t-full", // Semi-circle/Arch
+        color: "text-[#CBB89D]", // Sand
+        icon: Zap,
     },
 ];
 
@@ -54,9 +56,9 @@ export default function BrandValues() {
                             </h4>
                             <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif font-medium leading-[0.9] tracking-tight text-white mb-8">
                                 Our Core <br />
-                                <span className="text-white/80">Values</span>
+                                <span className="text-white">Values</span>
                             </h2>
-                            <p className="text-gray-400 max-w-sm leading-relaxed text-lg">
+                            <p className="text-white max-w-sm leading-relaxed text-lg">
                                 Guiding principles that define how we preserve the past while building the future.
                             </p>
                         </div>
@@ -79,19 +81,19 @@ export default function BrandValues() {
 
                                     {/* Icon & Title */}
                                     <div className="flex items-start gap-4 mb-4">
-                                        <div className={cn("w-8 h-8 flex-shrink-0 mt-1", value.color, value.shape)} />
+                                        <value.icon className={cn("w-9 h-9 flex-shrink-0 mt-1", value.color)} strokeWidth={1.5} />
                                         <h3 className="text-3xl font-serif font-medium text-white">
                                             {value.title}
                                         </h3>
                                     </div>
 
                                     {/* Subtitle */}
-                                    <h4 className="text-md font-bold text-white/90 mb-4 block">
+                                    <h4 className="text-md font-bold text-white mb-4 block">
                                         {value.subtitle}
                                     </h4>
 
                                     {/* Description */}
-                                    <p className="text-gray-400 leading-relaxed text-base font-light">
+                                    <p className="text-white leading-relaxed text-base font-light">
                                         {value.description}
                                     </p>
                                 </motion.div>

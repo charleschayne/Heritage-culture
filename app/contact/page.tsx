@@ -63,7 +63,7 @@ export default function Contact() {
                     <div className="lg:col-span-4 space-y-12">
                         <div className="space-y-5">
                             <h3 className="text-xl font-serif text-white">Our Location</h3>
-                            <div className="flex items-start gap-4 text-gray-400 font-light leading-relaxed font-sans">
+                            <div className="flex items-start gap-4 text-white font-light leading-relaxed font-sans">
                                 <MapPin className="w-5 h-5 shrink-0 text-hc-sand mt-0.5" />
                                 <address className="not-italic">
                                     Heritage & Culture Africa<br />
@@ -75,11 +75,11 @@ export default function Contact() {
                         <div className="space-y-5">
                             <h3 className="text-xl font-serif text-white">Contact Info</h3>
                             <div className="space-y-4">
-                                <div className="flex items-center gap-4 text-gray-400 font-light font-sans">
+                                <div className="flex items-center gap-4 text-white font-light font-sans">
                                     <Mail className="w-5 h-5 shrink-0 text-hc-sand" />
                                     <a href="mailto:info@handcafrica.com" className="hover:text-white transition-colors">info@handcafrica.com</a>
                                 </div>
-                                <div className="flex items-center gap-4 text-gray-400 font-light font-sans">
+                                <div className="flex items-center gap-4 text-white font-light font-sans">
                                     <Phone className="w-5 h-5 shrink-0 text-hc-sand" />
                                     <a href="tel:+233123456789" className="hover:text-white transition-colors">+233 123 456 789</a>
                                 </div>
@@ -103,11 +103,11 @@ export default function Contact() {
 
                         {/* Topics */}
                         <div className="space-y-4 pt-4 border-t border-white/5">
-                            <p className="text-xs font-bold tracking-widest uppercase text-white/30 font-sans">We'd love to hear about</p>
+                            <p className="text-xs font-bold tracking-widest uppercase text-white font-sans">We'd love to hear about</p>
                             {["Partnership & Sponsorship", "AfriKulture Doha 2026", "NYMF Collaborations", "Press & Media", "General Inquiry"].map((t) => (
                                 <div key={t} className="flex items-center gap-3">
                                     <span className="w-1 h-1 rounded-full bg-hc-sand" />
-                                    <span className="text-gray-500 font-sans text-sm">{t}</span>
+                                    <span className="text-white font-sans text-sm">{t}</span>
                                 </div>
                             ))}
                         </div>
@@ -119,7 +119,7 @@ export default function Contact() {
                             <div className="flex flex-col items-center justify-center h-full text-center py-20 gap-6">
                                 <CheckCircle className="w-16 h-16 text-hc-sand" />
                                 <h2 className="text-3xl font-serif">Message Sent!</h2>
-                                <p className="text-gray-400 font-light font-sans max-w-sm">
+                                <p className="text-white font-light font-sans max-w-sm">
                                     Thank you for reaching out. We've received your message and will be in touch shortly.
                                 </p>
                                 <button
@@ -133,7 +133,7 @@ export default function Contact() {
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
-                                        <label htmlFor="name" className="text-xs font-bold tracking-widest uppercase text-gray-500 font-sans">Name *</label>
+                                        <label htmlFor="name" className="text-xs font-bold tracking-widest uppercase text-white font-sans">Name *</label>
                                         <input
                                             type="text"
                                             id="name"
@@ -146,7 +146,7 @@ export default function Contact() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="email" className="text-xs font-bold tracking-widest uppercase text-gray-500 font-sans">Email *</label>
+                                        <label htmlFor="email" className="text-xs font-bold tracking-widest uppercase text-white font-sans">Email *</label>
                                         <input
                                             type="email"
                                             id="email"
@@ -161,7 +161,7 @@ export default function Contact() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="subject" className="text-xs font-bold tracking-widest uppercase text-gray-500 font-sans">Subject</label>
+                                    <label htmlFor="subject" className="text-xs font-bold tracking-widest uppercase text-white font-sans">Subject</label>
                                     <select
                                         id="subject"
                                         name="subject"
@@ -179,7 +179,7 @@ export default function Contact() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="message" className="text-xs font-bold tracking-widest uppercase text-gray-500 font-sans">Message *</label>
+                                    <label htmlFor="message" className="text-xs font-bold tracking-widest uppercase text-white font-sans">Message *</label>
                                     <textarea
                                         id="message"
                                         name="message"
